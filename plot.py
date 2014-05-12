@@ -47,6 +47,7 @@ def main():
         sys.exit(1)
 
     y = []
+    x = []
     for line in open(filename, "r").readlines():
         line = line.strip()
 
@@ -60,9 +61,13 @@ def main():
             line = line.split(",")
             if len(line) < 2:
                 y.append(float(line[0]))
-                print(line)
+            else:
+                x.append(line[0])
+                y.append(float(line[1]))
+            print(line)
 
-    x = range(1, len(y) + 1)
+    if len(x) < 1:
+        x = range(1, len(y) + 1)
 
     plt.rc('font', **{'family': 'DejaVu Sans'})
     fig, ax = plt.subplots(1, figsize=(8, 6))
