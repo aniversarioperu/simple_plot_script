@@ -31,9 +31,9 @@ def main():
         action='store',
         metavar='table.csv',
         help='''A table of the format:
-                x_title,y_title,Main_title
-                value1
-                value2''',
+                x_title,  y_title,  Main_title
+                x_label1, value1
+                x_label2, value2''',
         required=False,
         dest='filename',
     )
@@ -50,15 +50,17 @@ def main():
     for line in open(filename, "r").readlines():
         line = line.strip()
 
-        res = re.search("[0-9]", line)
+        res = re.search("[0-9]+", line)
         if not res:
             line = line.split(",")
             x_lab = line[0]
             y_lab = line[1]
             main = line[2]
         else:
-            y.append(float(line))
-            print(line)
+            line = line.split(",")
+            if len(line) < 2:
+                y.append(float(line[0]))
+                print(line)
 
     x = range(1, len(y) + 1)
 
