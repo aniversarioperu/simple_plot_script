@@ -3,12 +3,12 @@
 
 import fileinput
 
-import prettyplotlib as ppl
-import numpy as np
-from prettyplotlib import plt
 import sys
 import re
 
+import prettyplotlib as ppl
+import numpy as np
+from prettyplotlib import plt
 
 """
 sample,ng/ul,Title
@@ -33,7 +33,7 @@ for line in fileinput.input():
 x = range(1, len(y) + 1)
 
 plt.rc('font', **{'family': 'DejaVu Sans'})
-fig, ax = plt.subplots(1, figsize=(8,6))
+fig, ax = plt.subplots(1, figsize=(8, 6))
 
 width = 0.2
 ind = np.arange(len(y))
@@ -42,12 +42,13 @@ ax.bar(ind, y)
 ax.set_xticks(ind + 0.5)
 ax.set_xticklabels(x)
 ax.autoscale()
-ax.set_title(main,
-        fontdict = {'fontsize':20}
-        )
+ax.set_title(
+    main,
+    fontdict={'fontsize': 20}
+)
 
-plt.ylabel(y_lab, fontdict={'fontsize':15})
-plt.xlabel(x_lab, fontdict={'fontsize':15})
+plt.ylabel(y_lab, fontdict={'fontsize': 15})
+plt.xlabel(x_lab, fontdict={'fontsize': 15})
 plt.tick_params(axis="y", which="major", labelsize=10)
 plt.tick_params(axis="x", which="major", labelsize=10)
 
